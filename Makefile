@@ -21,7 +21,3 @@ migrateDown:
 sqlcGen:
 	sqlc generate
 
-start:
-	make runDBContainer
-	make createDB
-	make migrateup

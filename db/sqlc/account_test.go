@@ -1,4 +1,4 @@
-package db
+package sqlc
 
 import (
 	"context"
@@ -10,6 +10,18 @@ import (
 
 func TestCreateAccount(t *testing.T) {
 	createRandomAccount(t)
+
+}
+
+func TestAddAccountBalance(t *testing.T) {
+	initAcc := createRandomAccount(t)
+	UpdatedAcc, err := testQueries.AddAccountBalance(context.Background(), AddAccountBalanceParams{
+		ID:     initAcc.ID,
+		Amount: 10,
+	})
+
+	require.NoError(t, err)
+	require.Equal(t, initAcc.Balance+10, UpdatedAcc.Balance)
 
 }
 
@@ -28,13 +40,18 @@ func TestGetAccount(t *testing.T) {
 }
 
 func TestListAccounts(t *testing.T) {
+	var firstOwner string
 	for i := 0; i < 10; i++ {
-		createRandomAccount(t)
+
+		if i == 0 {
+			firstOwner = createRandomAccount(t).Owner
+		}
 	}
+
 	arg := ListAccountsParams{
 		Limit:  1,
 		Offset: 0,
-		Owner:  "gqavfr",
+		Owner:  firstOwner,
 	}
 	accs, err := testQueries.ListAccounts(context.Background(), arg)
 
@@ -54,6 +71,15 @@ func TestUpdateAccount(t *testing.T) {
 
 	require.NoError(t, err)
 	require.Equal(t, updatedAcc.Balance, arg.Balance)
+}
+
+func TestAccountForUpdate(t *testing.T) {
+
+	createdAcc := createRandomAccount(t)
+	gotAcc, err := testQueries.GetAccountForUpdate(context.Background(), createdAcc.ID)
+
+	require.NoError(t, err)
+	require.Equal(t, createdAcc, gotAcc)
 }
 
 func createRandomAccount(t *testing.T) Account {
