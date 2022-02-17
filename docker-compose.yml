@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: "simple-bank-database"
+    platform: linux/x86_64
+    image: postgres:12-alpine
+    networks:
+      - simple-bank
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: "simple-bank"
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "secret"
+    volumes:
+      - simple-bank:/var/lib/mysql
+
+  simple-bank:
+    container_name: "simple-bank-service"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    restart: on-failure
+    depends_on:
+      - db
+    networks:
+      - simple-bank
+
+
+networks:
+  simple-bank: null
+volumes:
+  simple-bank: null

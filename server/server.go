@@ -1,9 +1,8 @@
 package server
 
 import (
-	"learn/back-end/store/store"
-	"learn/back-end/util"
-
+	"github.com/duckhue01/back-end/store/store"
+	"github.com/duckhue01/back-end/util"
 	"github.com/gin-gonic/gin"
 )
 

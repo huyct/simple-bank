@@ -7,19 +7,19 @@ removeDBContainer:
 	docker rm postgres12
 
 createDB:
-	docker exec -it postgres12 createdb --username=root --owner=root simple_bank
+	docker exec -it postgres12 createdb --username=root --owner=root simple-bank
 
 dropDB:
-	docker exec -it postgres12 dropdb simple_bank
+	docker exec -it postgres12 dropdb simple-bank
 
 migrateUp:
-	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up
+	migrate -path store/migration -database "postgresql://root:secret@localhost:5432/simple-bank?sslmode=disable" -verbose up
 
 migrateDown:
-	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose down
+	migrate -path store/migration -database "postgresql://root:secret@localhost:5432/simple-bank?sslmode=disable" -verbose down
 
 sqlcGen:
 	sqlc generate
 
 connectPSQL:
-	psql -Atx "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable"
+	psql -Atx "postgresql://root:secret@localhost:5432/simple-bank?sslmode=disable"

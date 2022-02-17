@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"learn/back-end/util"
+	"github.com/duckhue01/util"
 
 	"github.com/stretchr/testify/require"
 )

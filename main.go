@@ -2,11 +2,11 @@ package main
 
 import (
 	"database/sql"
-	"learn/back-end/server"
-	"learn/back-end/store/store"
-	"learn/back-end/util"
 	"log"
 
+	"github.com/duckhue01/back-end/server"
+	"github.com/duckhue01/back-end/store/store"
+	"github.com/duckhue01/back-end/util"
 	_ "github.com/lib/pq"
 )
 

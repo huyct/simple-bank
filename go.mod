@@ -1,4 +1,4 @@
-module learn/back-end
+module github.com/duckhue01/back-end
 
 go 1.17
 

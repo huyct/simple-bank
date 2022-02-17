@@ -2,10 +2,11 @@ package store
 
 import (
 	"database/sql"
-	"learn/back-end/util"
 	"log"
 	"os"
 	"testing"
+
+	"github.com/duckhue01/util"
 
 	_ "github.com/lib/pq"
 )
