@@ -1,4 +1,4 @@
-name: Deploy to digital ocean
+name: Test and deploy to digital ocean
 
 on:
   pull_request:

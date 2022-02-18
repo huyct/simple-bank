@@ -25,8 +25,6 @@ WORKDIR /
 COPY --from=build /main /main
 COPY --from=build /app/config.json ./
 
-EXPOSE 8080
-
 USER nonroot:nonroot
 
 ENTRYPOINT ["/main"]
