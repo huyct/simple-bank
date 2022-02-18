@@ -6,8 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/duckhue01/util"
-
+	"github.com/duckhue01/back-end/util"
 	_ "github.com/lib/pq"
 )
 

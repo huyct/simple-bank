@@ -4,8 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/duckhue01/util"
-
+	"github.com/duckhue01/back-end/util"
 	"github.com/stretchr/testify/require"
 )
 
