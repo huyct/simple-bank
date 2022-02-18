@@ -2,13 +2,13 @@ name: Run unit test
 
 on:
   push:
-    branches: [ master ]
+    branches: [ dev ]
   pull_request:
-    branches: [ master ]
+    branches: [ dev ]
 
 jobs:
 
-  build:
+  test:
     runs-on: ubuntu-latest
     name: run test
     services:
