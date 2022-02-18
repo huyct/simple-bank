@@ -45,7 +45,7 @@ jobs:
     name: Build and push image to Docker Hub
     runs-on: ubuntu-latest
     environment: production
-
+    needs: test
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -72,6 +72,7 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     environment: production
+    needs: build
 
     steps:
       - name: Checkout

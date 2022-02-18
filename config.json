@@ -1,0 +1,5 @@
+{
+  "dbDriver": "postgres",
+  "dbSource": "postgresql://root:secret@localhost:5432/simple-bank?sslmode=disable",
+  "serverURL": ""
+}
