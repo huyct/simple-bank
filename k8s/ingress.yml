@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
   name: nginx
+  namespace: duckhue01
 spec:
   controller: k8s.io/ingress-nginx
 ---
@@ -14,17 +15,17 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "duckhue01.cluster.ahiho.dev"
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: simple-bank-api-service
-            port:
-              number: 80
-  # tls:
-  # - hosts:
-  #   - api.simple-bank.org
-  #   secretName: simple-bank-api-cert
+    - host: duckhue01.cluster.ahiho.dev
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: simple-bank-api-service
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - duckhue01.cluster.ahiho.dev
+      secretName: duckhue01-cluster-ahiho-dev-tls
