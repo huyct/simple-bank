@@ -25,7 +25,6 @@ connectPSQL:
 	psql -Atx "postgresql://root:secret@localhost:5432/simple-bank?sslmode=disable"
 
 runKube:
-		kubectl ns duckhue01 
 		kubectl apply -f k8s/deployment.yml 
 		kubectl apply -f k8s/service.yml 
 		kubectl apply -f k8s/ingress.yml 
