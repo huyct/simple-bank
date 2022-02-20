@@ -10,12 +10,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: simple-bank-ingress
+  namespace: duckhue01
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
 spec:
   ingressClassName: nginx
   rules:
-    - host: duckhue01.cluster.ahiho.dev
+    - host: "duckhue01.cluster.ahiho.dev"
       http:
         paths:
           - pathType: Prefix
@@ -28,4 +29,4 @@ spec:
   tls:
     - hosts:
         - duckhue01.cluster.ahiho.dev
-      secretName: duckhue01-cluster-ahiho-dev-tls
+      secretName: duckhue01-cluster-ahiho-dev-cert

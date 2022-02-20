@@ -1,8 +1,15 @@
 apiVersion: cert-manager.io/v1
-kind: Issuer
+kind: ClusterIssuer
 metadata:
   name: letsencrypt
   namespace: duckhue01
 spec:
-  ca:
-    secretName: duckhue01-cluster-ahiho-dev-tls
+  acme:
+    email: duckhuejs@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: duckhue01-cluster-ahiho-dev-key
+    solvers:
+      - http01:
+          ingress:
+            class: nginx
